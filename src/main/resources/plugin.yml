@@ -1,0 +1,6 @@
+name: PlayerWeight
+version: ${project.version}
+main: me.chaoticwagon.playerweight.PlayerWeight
+api-version: 1.17
+authors: [ chaoticwagon ]
+description: Add a weight system to your minecraft server.
