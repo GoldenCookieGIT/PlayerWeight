@@ -24,7 +24,8 @@ public class PlayerJoin implements Listener {
     public void playerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
-        tools.currentWeight.put(p.getUniqueId(), tools.getPlayerWeight(p)); 
+        tools.currentWeight.put(p.getUniqueId(), tools.getPlayerWeight(p));
+        tools.currentWeight.put(p.getUniqueId(), tools.getMaxPlayerWeight(p));
     }
 
 

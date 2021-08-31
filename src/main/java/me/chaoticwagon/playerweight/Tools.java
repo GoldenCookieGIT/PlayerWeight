@@ -17,6 +17,7 @@ public class Tools {
     }
 
     public Map<UUID,Integer> currentWeight = new HashMap<UUID,Integer>();
+    public Map<UUID,Integer> maxWeight = new HashMap<UUID, Integer>();
 
     public int getPlayerWeight(Player p){
         int weight = 0;
