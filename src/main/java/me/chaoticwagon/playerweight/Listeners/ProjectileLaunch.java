@@ -29,8 +29,8 @@ public class ProjectileLaunch implements Listener {
         if (!(e.getEntity().getShooter() instanceof Player)) return;
 
         Player p = (Player) e.getEntity().getShooter();
-        ItemStack item = new ItemStack();
 
+        tools.currentWeight.put(p.getUniqueId(), tools.getPlayerWeight(p));
 
     }
 }

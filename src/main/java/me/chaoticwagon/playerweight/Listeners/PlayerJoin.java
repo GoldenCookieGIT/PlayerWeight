@@ -23,7 +23,8 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void playerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        plugin.currentWeight = tools.getPlayerWeight(p);
+
+        tools.currentWeight.put(p.getUniqueId(), tools.getPlayerWeight(p)); 
     }
 
 

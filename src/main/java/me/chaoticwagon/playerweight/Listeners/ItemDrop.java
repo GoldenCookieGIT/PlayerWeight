@@ -28,7 +28,7 @@ public class ItemDrop implements Listener {
         ItemStack item = e.getItemDrop().getItemStack();
         int itemAmount = item.getAmount();
 
-        plugin.currentWeight = plugin.currentWeight - tools.getItemWeight(item, itemAmount);
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(item, 1));
 
     }
 }

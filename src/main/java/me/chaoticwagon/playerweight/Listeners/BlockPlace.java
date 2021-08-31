@@ -27,7 +27,7 @@ public class BlockPlace implements Listener {
         Player p = e.getPlayer();
         ItemStack block = new ItemStack(e.getBlockPlaced().getType());
 
-        plugin.currentWeight = plugin.currentWeight - tools.getItemWeight(block, 1);
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(block, 1));
 
     }
 }

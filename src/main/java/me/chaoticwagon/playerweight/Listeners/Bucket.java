@@ -28,26 +28,30 @@ public class Bucket implements Listener {
     public void bucketFill(PlayerBucketFillEvent e){
         ItemStack newBucket = e.getItemStack();
         ItemStack oldBucket = new ItemStack(e.getBucket());
+        Player p = e.getPlayer();
 
-        plugin.currentWeight = plugin.currentWeight - tools.getItemWeight(oldBucket, 1);
-        plugin.currentWeight = plugin.currentWeight + tools.getItemWeight(newBucket, 1);
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(oldBucket, 1));
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(newBucket, 1));
     }
 
     @EventHandler
     public void bucketEmpty(PlayerBucketEmptyEvent e){
         ItemStack newBucket = e.getItemStack();
         ItemStack oldBucket = new ItemStack(e.getBucket());
+        Player p = e.getPlayer();
 
-        plugin.currentWeight = plugin.currentWeight - tools.getItemWeight(oldBucket, 1);
-        plugin.currentWeight = plugin.currentWeight + tools.getItemWeight(newBucket, 1);
+
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(oldBucket, 1));
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(newBucket, 1));
     }
 
     @EventHandler
     public void bucketEntity(PlayerBucketEntityEvent e){
         ItemStack newBucket = e.getEntityBucket();
         ItemStack oldBucket = new ItemStack(e.getOriginalBucket());
+        Player p = e.getPlayer();
 
-        plugin.currentWeight = plugin.currentWeight - tools.getItemWeight(oldBucket, 1);
-        plugin.currentWeight = plugin.currentWeight + tools.getItemWeight(newBucket, 1);
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(oldBucket, 1));
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(newBucket, 1));
     }
 }

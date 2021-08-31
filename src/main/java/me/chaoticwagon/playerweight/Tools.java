@@ -4,6 +4,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class Tools {
 
     Main plugin;
@@ -11,6 +15,8 @@ public class Tools {
     public Tools(Main plugin) {
         this.plugin = plugin;
     }
+
+    public Map<UUID,Integer> currentWeight = new HashMap<UUID,Integer>();
 
     public int getPlayerWeight(Player p){
         int weight = 0;

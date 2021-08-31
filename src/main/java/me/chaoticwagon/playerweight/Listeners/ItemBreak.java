@@ -28,7 +28,7 @@ public class ItemBreak implements Listener {
         Player p = (Player) e.getPlayer();
         ItemStack item = e.getBrokenItem();
 
-        plugin.currentWeight = plugin.currentWeight - tools.getItemWeight(item, 1);
+        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(item, 1));
 
     }
 }
