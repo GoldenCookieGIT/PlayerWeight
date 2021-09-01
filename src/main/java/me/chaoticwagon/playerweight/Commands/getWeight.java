@@ -9,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.lang.annotation.Target;
 import java.util.logging.Level;
 
 public class getWeight implements CommandExecutor {
@@ -28,11 +29,17 @@ public class getWeight implements CommandExecutor {
 
         if (args.length == 0){
             p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "PlayerWeight" + ChatColor.WHITE + "] " + "Your weight is " +
-                    ChatColor.GREEN + plugin.currentWeight + "/" + tools.getMaxPlayerWeight(p));
+                    ChatColor.GREEN + tools.currentWeight.get(p.getUniqueId()).toString() + "/" +
+                    tools.maxWeight.get(p.getUniqueId()).toString());
+            return true;
         }
 
-        if (args[0] == null) {
-            p.sendMessage(ChatColor.RED + "Usage: /getweight <PLAYER>");
+        Player target = Bukkit.getPlayer(args[0]);
+        if (target == null) return true;
+
+        if (Bukkit.getServer().getOnlinePlayers().contains(target) && p.hasPermission("playerweight.veiwplayerweight")) {
+            p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "PlayerWeight" + ChatColor.WHITE + "] " + target.getDisplayName() + "'s weight is " +
+                    ChatColor.GREEN + tools.currentWeight.get(target.getUniqueId()).toString() + "/" + tools.maxWeight.get(target.getUniqueId()).toString());
             return true;
         }
 
