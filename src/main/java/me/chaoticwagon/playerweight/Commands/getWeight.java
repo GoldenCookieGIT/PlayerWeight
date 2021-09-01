@@ -17,6 +17,13 @@ public class getWeight implements CommandExecutor {
     Main plugin;
     Tools tools;
 
+    public getWeight(Main plugin) {
+        this.plugin = plugin;
+    }
+
+    public getWeight(Tools tools) {
+        this.tools = tools;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
