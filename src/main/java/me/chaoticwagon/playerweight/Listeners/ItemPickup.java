@@ -1,7 +1,6 @@
 package me.chaoticwagon.playerweight.Listeners;
 
 import me.chaoticwagon.playerweight.Main;
-import me.chaoticwagon.playerweight.Tools;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,14 +11,9 @@ import org.bukkit.inventory.ItemStack;
 public class ItemPickup implements Listener {
 
     Main plugin;
-    Tools tools;
 
     public ItemPickup(Main plugin) {
         this.plugin = plugin;
-    }
-
-    public ItemPickup(Tools tools) {
-        this.tools = tools;
     }
 
     @EventHandler
@@ -31,7 +25,7 @@ public class ItemPickup implements Listener {
         int amount = item.getAmount();
         Player p = (Player) e.getEntity();
 
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(item, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) + plugin.getItemWeight(item, 1));
 
 
     }

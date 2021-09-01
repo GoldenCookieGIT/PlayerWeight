@@ -1,7 +1,6 @@
 package me.chaoticwagon.playerweight.Listeners;
 
 import me.chaoticwagon.playerweight.Main;
-import me.chaoticwagon.playerweight.Tools;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,14 +10,9 @@ import org.bukkit.inventory.ItemStack;
 public class BlockPlace implements Listener {
 
     Main plugin;
-    Tools tools;
 
     public BlockPlace(Main plugin) {
         this.plugin = plugin;
-    }
-
-    public BlockPlace(Tools tools) {
-        this.tools = tools;
     }
 
     @EventHandler
@@ -27,7 +21,7 @@ public class BlockPlace implements Listener {
         Player p = e.getPlayer();
         ItemStack block = new ItemStack(e.getBlockPlaced().getType());
 
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(block, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) - plugin.getItemWeight(block, 1));
 
     }
 }

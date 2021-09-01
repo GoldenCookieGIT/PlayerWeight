@@ -1,7 +1,6 @@
 package me.chaoticwagon.playerweight.Listeners;
 
 import me.chaoticwagon.playerweight.Main;
-import me.chaoticwagon.playerweight.Tools;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,15 +13,11 @@ import org.bukkit.inventory.ItemStack;
 public class Bucket implements Listener {
 
     Main plugin;
-    Tools tools;
 
     public Bucket(Main plugin) {
         this.plugin = plugin;
     }
 
-    public Bucket(Tools tools) {
-        this.tools = tools;
-    }
 
     @EventHandler
     public void bucketFill(PlayerBucketFillEvent e){
@@ -30,8 +25,8 @@ public class Bucket implements Listener {
         ItemStack oldBucket = new ItemStack(e.getBucket());
         Player p = e.getPlayer();
 
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(oldBucket, 1));
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(newBucket, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) - plugin.getItemWeight(oldBucket, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) + plugin.getItemWeight(newBucket, 1));
     }
 
     @EventHandler
@@ -41,8 +36,8 @@ public class Bucket implements Listener {
         Player p = e.getPlayer();
 
 
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(oldBucket, 1));
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(newBucket, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) - plugin.getItemWeight(oldBucket, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) + plugin.getItemWeight(newBucket, 1));
     }
 
     @EventHandler
@@ -51,7 +46,7 @@ public class Bucket implements Listener {
         ItemStack oldBucket = new ItemStack(e.getOriginalBucket());
         Player p = e.getPlayer();
 
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) - tools.getItemWeight(oldBucket, 1));
-        tools.currentWeight.put(p.getUniqueId(),tools.currentWeight.get(p.getUniqueId()) + tools.getItemWeight(newBucket, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) - plugin.getItemWeight(oldBucket, 1));
+        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) + plugin.getItemWeight(newBucket, 1));
     }
 }

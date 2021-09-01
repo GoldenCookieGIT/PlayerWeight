@@ -1,12 +1,12 @@
 name: PlayerWeight
 version: ${project.version}
-main: me.chaoticwagon.playerweight.PlayerWeight
+main: me.chaoticwagon.playerweight.Main
 api-version: 1.17
 authors: [ chaoticwagon ]
 description: Adds a weight system to your minecraft server.
 commands:
   getweight:
     description: returns the weight of the player targeted
-  reload:
+  playerweight:
     description: reloads the plugin
     aliases: pw

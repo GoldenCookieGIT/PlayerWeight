@@ -1,7 +1,6 @@
 package me.chaoticwagon.playerweight.Commands;
 
 import me.chaoticwagon.playerweight.Main;
-import me.chaoticwagon.playerweight.Tools;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,14 +14,9 @@ import java.util.logging.Level;
 public class getWeight implements CommandExecutor {
 
     Main plugin;
-    Tools tools;
 
     public getWeight(Main plugin) {
         this.plugin = plugin;
-    }
-
-    public getWeight(Tools tools) {
-        this.tools = tools;
     }
 
     @Override
@@ -36,8 +30,8 @@ public class getWeight implements CommandExecutor {
 
         if (args.length == 0){
             p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "PlayerWeight" + ChatColor.WHITE + "] " + "Your weight is " +
-                    ChatColor.GREEN + tools.currentWeight.get(p.getUniqueId()).toString() + "/" +
-                    tools.maxWeight.get(p.getUniqueId()).toString());
+                    ChatColor.GREEN + plugin.currentWeight.get(p.getUniqueId()).toString() + "/" +
+                    plugin.maxWeight.get(p.getUniqueId()).toString());
             return true;
         }
 
@@ -46,7 +40,7 @@ public class getWeight implements CommandExecutor {
 
         if (Bukkit.getServer().getOnlinePlayers().contains(target) && p.hasPermission("playerweight.veiwplayerweight")) {
             p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "PlayerWeight" + ChatColor.WHITE + "] " + target.getDisplayName() + "'s weight is " +
-                    ChatColor.GREEN + tools.currentWeight.get(target.getUniqueId()).toString() + "/" + tools.maxWeight.get(target.getUniqueId()).toString());
+                    ChatColor.GREEN + plugin.currentWeight.get(target.getUniqueId()).toString() + "/" + plugin.maxWeight.get(target.getUniqueId()).toString());
             return true;
         }
 
