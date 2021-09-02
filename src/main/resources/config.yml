@@ -3,6 +3,6 @@ Default-player-weight: 100
 Default-item-weight: 1
 
 
-//If an items weight isn't provided, it will automatically default to the Default-item-weight
+##If an items weight isn't provided, it will automatically default to the Default-item-weight
 Custom-weights:
   DIRT: 1

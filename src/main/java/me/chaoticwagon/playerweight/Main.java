@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,11 +58,13 @@ public final class Main extends JavaPlugin {
 
         for (int slot = 0; slot <= 35; slot++) {
             ItemStack item = p.getInventory().getItem(slot);
-            if (item != null || item.getType() != Material.AIR) {
-                int amount = item.getAmount();
-                weight = weight + getItemWeight(item, p.getInventory().getItem(slot).getAmount());
+            if (item == null || item.getType().isAir()) {
+                continue;
             }
-
+            int amount = item.getAmount();
+            System.out.println(item.getType().toString());
+            System.out.println("Amount" + amount);
+            weight = weight + getItemWeight(item, p.getInventory().getItem(slot).getAmount());
         }
 
         weight = weight + getItemWeight(p.getInventory().getHelmet(), 1) + getItemWeight(p.getInventory().getChestplate(), 1)
@@ -83,9 +86,11 @@ public final class Main extends JavaPlugin {
             weight = this.getConfig().getInt("Custom-weights." + item.getType().toString());
         }catch(Exception e){
             weight = this.getConfig().getInt("Default-item-weight");
+            System.out.println(weight);
         }
-
-        return weight * amount;
+        weight = weight * amount;
+        System.out.println(weight);
+        return weight;
     }
 
 }
