@@ -33,6 +33,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemPickup(this),this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(this),this);
         getServer().getPluginManager().registerEvents(new Respawn(this),this);
+        getServer().getPluginManager().registerEvents(new ItemDrop(this),this);
 
         BukkitScheduler scheduler = getServer().getScheduler();
 //        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
@@ -82,12 +83,17 @@ public final class Main extends JavaPlugin {
     public int getItemWeight(ItemStack item, int amount){
         int weight;
 
-        try{
-            weight = this.getConfig().getInt("Custom-weights." + item.getType().toString());
-        }catch(Exception e){
+        if (item == null || item.getType().isAir()) return 0;
+
+        if (this.getConfig().getInt("Custom-weights." + item.getType().toString()) <= 0) {
             weight = this.getConfig().getInt("Default-item-weight");
+            weight = weight * amount;
             System.out.println(weight);
+            return weight;
         }
+
+        weight = this.getConfig().getInt("Custom-weights." + item.getType().toString());
+
         weight = weight * amount;
         System.out.println(weight);
         return weight;

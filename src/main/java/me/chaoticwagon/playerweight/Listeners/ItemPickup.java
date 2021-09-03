@@ -25,7 +25,7 @@ public class ItemPickup implements Listener {
         int amount = item.getAmount();
         Player p = (Player) e.getEntity();
 
-        plugin.currentWeight.put(p.getUniqueId(),plugin.currentWeight.get(p.getUniqueId()) + plugin.getItemWeight(item, 1));
+        plugin.currentWeight.put(p.getUniqueId(), plugin.currentWeight.get(p.getUniqueId()) + plugin.getItemWeight(item,item.getAmount()));
 
 
     }
