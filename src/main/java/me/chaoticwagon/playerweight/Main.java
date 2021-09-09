@@ -31,6 +31,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoin(this),this);
         getServer().getPluginManager().registerEvents(new Respawn(this),this);
         getServer().getPluginManager().registerEvents(new ItemDrop(this),this);
+        getServer().getPluginManager().registerEvents(new PlayerWalk(this),this);
 
         BukkitScheduler scheduler = getServer().getScheduler();
 //        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {

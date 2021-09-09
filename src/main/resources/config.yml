@@ -3,11 +3,11 @@ Default-player-weight: 100
 
 ##The weight point at which the player speed will start decreasing until the Maximum-Speed-Decrease
 ##Must be lower than the max player weight. -1 if you don't want the speed to decrease
-Speed-Decrease-Start: 75
+Speed-decrease-start: 75
 
 ##The PERCENTAGE that you want the player to be slowed down when they reach their maximum weight
 ##Enter a number from 0 to 100 as if it was a PERCENTAGE, don't add a % symbol
-Maximum-Speed-Decrease: 100
+Maximum-speed-decrease: 100
 
 ##If an items weight isn't provided, it will automatically default to the Default-item-weight
 Default-item-weight: 1
