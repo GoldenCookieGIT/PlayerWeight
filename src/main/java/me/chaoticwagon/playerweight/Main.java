@@ -95,6 +95,22 @@ public final class Main extends JavaPlugin {
         weight = weight * amount;
         System.out.println(weight);
         return weight;
+
+    }
+    public boolean isInt(Object object){
+        if (object instanceof Integer){
+            return true;
+        } else {
+            String string = object.toString();
+
+            try {
+                Integer.parseInt(string);
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        return  true;
+
     }
 
 }
