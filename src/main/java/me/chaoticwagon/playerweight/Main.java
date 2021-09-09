@@ -2,6 +2,8 @@ package me.chaoticwagon.playerweight;
 
 import me.chaoticwagon.playerweight.Commands.Reload;
 import me.chaoticwagon.playerweight.Commands.getWeight;
+import me.chaoticwagon.playerweight.Commands.setItemWeight;
+import me.chaoticwagon.playerweight.Commands.setMaxWeight;
 import me.chaoticwagon.playerweight.Listeners.*;
 
 import org.bukkit.entity.Player;
@@ -20,6 +22,8 @@ public final class Main extends JavaPlugin {
         this.saveDefaultConfig();
         getCommand("playerweight").setExecutor(new Reload(this));
         getCommand("getweight").setExecutor(new getWeight(this));
+        getCommand("setitemweight").setExecutor(new setItemWeight(this));
+        getCommand("setmaxweight").setExecutor(new setMaxWeight(this));
 
         getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
         getServer().getPluginManager().registerEvents(new Bucket(this),this);
