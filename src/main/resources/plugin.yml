@@ -10,3 +10,7 @@ commands:
   playerweight:
     description: reloads the plugin
     aliases: pw
+  setitemweight:
+    description: sets the weight of the item in the player hand in the config
+  setmaxweight:
+    description: sets the max player weight in the config
