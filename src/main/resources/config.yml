@@ -1,7 +1,7 @@
 ##The maximum a player can carry by default
 Default-player-weight: 100
 
-##The weight point at which the player speed will start decreasing until the Maximum-Speed-Decrease
+##The weight amount at which the player speed will start decreasing until the Maximum-Speed-Decrease
 ##Must be lower than the max player weight. -1 if you don't want the speed to decrease
 Speed-decrease-start: 75
 
@@ -11,6 +11,9 @@ Maximum-speed-decrease: 100
 
 ##If an items weight isn't provided, it will automatically default to the Default-item-weight
 Default-item-weight: 1
+
+##If false the weight boss bar will only be shown when activated by the player when using /playerweight settings
+Always-show-weight-bossbar: true
 
 ##Enter the Item that you want with an INTEGER for its weight
 ##https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html list of all items in format
