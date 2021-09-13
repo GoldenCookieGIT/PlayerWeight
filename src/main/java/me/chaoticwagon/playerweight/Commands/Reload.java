@@ -3,11 +3,14 @@ package me.chaoticwagon.playerweight.Commands;
 import me.chaoticwagon.playerweight.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.logging.Level;
 
@@ -40,9 +43,15 @@ public class Reload implements CommandExecutor {
             if (!(sender instanceof Player)) return true;
             Player p = (Player) sender;
 
-            Inventory settings = Bukkit.createInventory(p,54, ChatColor.RED + "" + ChatColor.BOLD + "Settings");
-            
+            Inventory settings = Bukkit.createInventory(p,7, ChatColor.RED + "" + ChatColor.BOLD + "Settings");
 
+            Material type;
+            ItemStack bossbar = new ItemStack(Material.DRAGON_HEAD);
+            ItemMeta bossbarM = bossbar.getItemMeta();
+            bossbar.setItemMeta(bossbarM);
+
+
+            settings.setItem(0, bossbar);
             p.openInventory(settings);
             return true;
         }
