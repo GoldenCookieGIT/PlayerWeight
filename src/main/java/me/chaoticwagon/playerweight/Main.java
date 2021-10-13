@@ -52,7 +52,6 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
-
     public Map<UUID,Integer> currentWeight = new HashMap<UUID,Integer>();
     public Map<UUID,Integer> maxWeight = new HashMap<UUID, Integer>();
 
@@ -114,7 +113,6 @@ public final class Main extends JavaPlugin {
             }
         }
         return  true;
-
     }
 
 }
