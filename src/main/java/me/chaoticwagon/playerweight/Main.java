@@ -6,6 +6,7 @@ import me.chaoticwagon.playerweight.Commands.setItemWeight;
 import me.chaoticwagon.playerweight.Commands.setMaxWeight;
 import me.chaoticwagon.playerweight.Listeners.*;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,9 +18,12 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin {
 
+    DataManager data;
+
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
+        this.data = new DataManager(this);
         getCommand("playerweight").setExecutor(new Reload(this));
         getCommand("getweight").setExecutor(new getWeight(this));
         getCommand("setitemweight").setExecutor(new setItemWeight(this));
@@ -114,5 +118,12 @@ public final class Main extends JavaPlugin {
         }
         return  true;
     }
+
+    public String getSetting(String path) {
+        String setting = getConfig().getConfigurationSection(path).toString();
+        return setting;
+    }
+
+
 
 }
