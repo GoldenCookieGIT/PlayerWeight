@@ -6,7 +6,9 @@ import me.chaoticwagon.playerweight.Commands.setItemWeight;
 import me.chaoticwagon.playerweight.Commands.setMaxWeight;
 import me.chaoticwagon.playerweight.Listeners.*;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,12 +20,14 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin {
 
-    DataManager data;
+    public DataManager data;
+    public BossBarSetup bar;
 
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
         this.data = new DataManager(this);
+        this.data.saveDefaultConfig();
         getCommand("playerweight").setExecutor(new Reload(this));
         getCommand("getweight").setExecutor(new getWeight(this));
         getCommand("setitemweight").setExecutor(new setItemWeight(this));
@@ -41,7 +45,15 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemDrop(this),this);
         getServer().getPluginManager().registerEvents(new PlayerWalk(this),this);
 
-        BukkitScheduler scheduler = getServer().getScheduler();
+
+        if (Bukkit.getOnlinePlayers().size() > 0)
+            for (Player on : Bukkit.getOnlinePlayers()){
+                bar = new BossBarSetup(this, on);
+                bar.createBar();
+                bar.addPlayer(on);
+            }
+
+//            BukkitScheduler scheduler = getServer().getScheduler();
 //        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
 //            @Override
 //            public void run() {
@@ -54,7 +66,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        bar.getBar().removeAll();
     }
     public Map<UUID,Integer> currentWeight = new HashMap<UUID,Integer>();
     public Map<UUID,Integer> maxWeight = new HashMap<UUID, Integer>();
