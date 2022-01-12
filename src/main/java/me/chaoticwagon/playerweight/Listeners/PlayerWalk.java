@@ -10,7 +10,7 @@ public class PlayerWalk implements Listener {
 
     Main plugin;
 
-    public PlayerWalk(Main plugin) {
+    public PlayerWalk(Main plugin)                                   {
         this.plugin = plugin;
     }
 
@@ -29,10 +29,10 @@ public class PlayerWalk implements Listener {
 
         if (decreaseStart <= -1) return;
         if (maxDecrease <= 0) return;
-        if (currentWeight == 0) return;
-
+        if (currentWeight <= 0) return;
         if (currentWeight - decreaseStart <= 0) return;
 
+        //the percentage that the player is over their max weight
        float overDecreaseStart = ((float) currentWeight - (float) decreaseStart) / ((float) maxWeight - (float) decreaseStart);
 
        if (overDecreaseStart * 100 > maxDecrease) {

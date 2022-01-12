@@ -24,6 +24,7 @@ public class PlayerJoin implements Listener {
         if (!plugin.data.getConfig().getConfigurationSection("Players.").contains(p.getUniqueId().toString())) {
             plugin.data.getConfig().set("Players.", p.getUniqueId().toString());
             plugin.data.getConfig().set("Players." + p.getUniqueId().toString() + ".BossBar", true);
+            plugin.data.getConfig().set("Players." + p.getUniqueId().toString() + ".ChatLog", true);
 
         }
 
