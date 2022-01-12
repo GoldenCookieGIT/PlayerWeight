@@ -34,11 +34,8 @@ public final class Main extends JavaPlugin {
         getCommand("setmaxweight").setExecutor(new setMaxWeight(this));
 
         getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
-        getServer().getPluginManager().registerEvents(new Bucket(this),this);
-        getServer().getPluginManager().registerEvents(new EggThrow(this),this);
         getServer().getPluginManager().registerEvents(new InventoryClose(this),this);
         getServer().getPluginManager().registerEvents(new ItemBreak(this),this);
-        getServer().getPluginManager().registerEvents(new ItemConsume(this),this);
         getServer().getPluginManager().registerEvents(new ItemPickup(this),this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(this),this);
         getServer().getPluginManager().registerEvents(new Respawn(this),this);
@@ -47,10 +44,10 @@ public final class Main extends JavaPlugin {
 
 
         if (Bukkit.getOnlinePlayers().size() > 0)
-            for (Player on : Bukkit.getOnlinePlayers()){
-                bar = new BossBarSetup(this, on);
+            for (Player player : Bukkit.getOnlinePlayers()){
+                bar = new BossBarSetup(this, player);
                 bar.createBar();
-                bar.addPlayer(on);
+                bar.addPlayer(player);
             }
 
 //            BukkitScheduler scheduler = getServer().getScheduler();

@@ -18,8 +18,6 @@ public class InventoryClose implements Listener {
     @EventHandler
     public void invClose(InventoryCloseEvent e){
         Player p = (Player) e.getPlayer();
-        plugin
-                .currentWeight.put(p.getUniqueId(), plugin
-                        .getPlayerWeight(p));
+        plugin.currentWeight.put(p.getUniqueId(), plugin.getPlayerWeight(p));
     }
 }
