@@ -21,13 +21,6 @@ public class PlayerJoin implements Listener {
         plugin.currentWeight.put(p.getUniqueId(), plugin.getPlayerWeight(p));
         plugin.maxWeight.put(p.getUniqueId(), plugin.getMaxPlayerWeight(p));
 
-        if (!plugin.data.getConfig().getConfigurationSection("Players.").contains(p.getUniqueId().toString())) {
-            plugin.data.getConfig().set("Players.", p.getUniqueId().toString());
-            plugin.data.getConfig().set("Players." + p.getUniqueId().toString() + ".BossBar", true);
-            plugin.data.getConfig().set("Players." + p.getUniqueId().toString() + ".ChatLog", true);
-
-        }
-
     }
 
 

@@ -20,14 +20,12 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin {
 
-    public DataManager data;
+    
     public BossBarSetup bar;
 
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        this.data = new DataManager(this);
-        this.data.saveDefaultConfig();
         getCommand("playerweight").setExecutor(new Reload(this));
         getCommand("getweight").setExecutor(new getWeight(this));
         getCommand("setitemweight").setExecutor(new setItemWeight(this));
