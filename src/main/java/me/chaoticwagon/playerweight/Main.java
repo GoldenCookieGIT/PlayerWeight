@@ -5,14 +5,10 @@ import me.chaoticwagon.playerweight.Commands.getWeight;
 import me.chaoticwagon.playerweight.Commands.setItemWeight;
 import me.chaoticwagon.playerweight.Commands.setMaxWeight;
 import me.chaoticwagon.playerweight.Listeners.*;
-
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +16,7 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin {
 
-    
+
     public BossBarSetup bar;
 
     @Override
@@ -88,12 +84,11 @@ public final class Main extends JavaPlugin {
     }
 
     public int getMaxPlayerWeight(Player p) {
-        int maxWeight = this.getConfig().getInt("Default-player-weight");
-        return maxWeight;
+        return this.getConfig().getInt("Default-player-weight");
     }
 
     public int getItemWeight(ItemStack item, int amount){
-        int weight;
+        int weight = 0;
 
         if (item == null || item.getType().isAir()) return 0;
 
@@ -125,12 +120,5 @@ public final class Main extends JavaPlugin {
         }
         return  true;
     }
-
-    public String getSetting(String path) {
-        String setting = getConfig().getConfigurationSection(path).toString();
-        return setting;
-    }
-
-
 
 }
