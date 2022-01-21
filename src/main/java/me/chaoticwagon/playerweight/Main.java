@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,15 +45,15 @@ public final class Main extends JavaPlugin {
                 bar.addPlayer(player);
             }
 
-//            BukkitScheduler scheduler = getServer().getScheduler();
-//        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
-//            @Override
-//            public void run() {
-//               for (Player p : getServer().getOnlinePlayers()){
-//                   tools.currentWeight.put(p.getUniqueId(),tools.getPlayerWeight(p));
-//               }
-//            }
-//        },0L, 20L);
+        BukkitScheduler scheduler = getServer().getScheduler();
+        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
+            @Override
+            public void run() {
+               for (Player p : getServer().getOnlinePlayers()){
+                   currentWeight.put(p.getUniqueId(),getPlayerWeight(p));
+               }
+            }
+        },0L, 20L);
     }
 
     @Override
