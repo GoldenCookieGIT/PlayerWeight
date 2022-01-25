@@ -10,7 +10,7 @@ public class PlayerWalk implements Listener {
 
     Main plugin;
 
-    public PlayerWalk(Main plugin)                                   {
+    public PlayerWalk(Main plugin) {
         this.plugin = plugin;
     }
 
